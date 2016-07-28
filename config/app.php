@@ -209,19 +209,4 @@ return [
 
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Class Aliases
-    |--------------------------------------------------------------------------
-    |
-    | This array of class aliases will be registered when this application
-    | is started. However, feel free to register as many as you wish as
-    | the aliases are "lazy" loaded so they don't hinder performance.
-    |
-    */
-   
-   'admin_name'     => 'admin',
-   'admin_password' => 'test',
-   'admin_email'    => 'admin@refragged.com',
-
 ];

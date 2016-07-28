@@ -27,9 +27,9 @@ class PermissionsTableSeeder extends Seeder
 
         // Root user
         $adminUser = App\User::create([
-        		'name'		=> Config('app.admin_name'),
-        		'email'		=> Config('app.admin_email'),
-        		'password'	=> bcrypt(Config('app.admin_password')),
+        		'name'		=> getenv('ADMIN_USER'),
+        		'email'		=> getenv('ADMIN_EMAIL'),
+        		'password'	=> bcrypt(getenv('ADMIN_PASSWORD')),
         	]);
 
         // Root user gets first role, i.e. administrator
