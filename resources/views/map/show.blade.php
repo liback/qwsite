@@ -5,23 +5,30 @@
 <div class="panel-heading">Map - <?php echo $map->name;?>: <?php echo $map->description;?></div>
 
 <div class="panel-body">
-			
-	<table class="table table-hover">
-	<tr><th>ID</th><td><?php echo $map->id;?></td></tr>
-	<tr><th>Name</th><td><?php echo $map->name;?></td></tr>
-	<tr><th>Description</th><td><?php echo $map->description;?></td></tr>
-	<tr><th>Action</th>
-	<td><a href="{{ action('MapController@edit', [$map->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a> 
 	
-		{!! Form::open([
-			'route' => ['map.destroy', $map->id], 
-			'method' => 'DELETE'
-			]) !!}
-			{!! Form::submit('Delete', ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
-		{!! Form::close() !!}
-	</td>
-	</tr>
-	</table>
+	<div class="row">
+		<div class="col-sm-8">
+			<table class="table table-hover">
+			<tr><th>ID</th><td><?php echo $map->id;?></td></tr>
+			<tr><th>Name</th><td><?php echo $map->name;?></td></tr>
+			<tr><th>Description</th><td><?php echo $map->description;?></td></tr>
+			<tr><th>Action</th>
+			<td><a href="{{ action('MapController@edit', [$map->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a> 
+			
+				{!! Form::open([
+					'route' => ['map.destroy', $map->id], 
+					'method' => 'DELETE'
+					]) !!}
+					{!! Form::submit('Delete', ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
+				{!! Form::close() !!}
+			</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-sm-4">
+			<img src="{{ asset('storage/images/main_screenshot_placeholder.png') }}" style="width: 100%; height: 100%;"/>
+		</div>
+	</div>
 
 	<div class="row">
 		<div class="col-sm-4">
