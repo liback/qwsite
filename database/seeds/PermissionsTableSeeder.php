@@ -11,6 +11,8 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
+        App\Permission::create(['name' => 'edit_map']);
+        App\Permission::create(['name' => 'delete_map']);
         App\Permission::create(['name' => 'edit_role']);
         App\Permission::create(['name' => 'create_role']);
         App\Permission::create(['name' => 'delete_role']);

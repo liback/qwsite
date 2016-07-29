@@ -36,3 +36,10 @@ Route::post('user',									['as' => 'user.store', 	'uses' => 'UserController@st
 Route::get('user/{id}/edit',						['as' => 'user.edit', 	'uses' => 'UserController@edit', 	'middleware' => 'permission:edit_user']);
 Route::match(array('PUT','PATCH'), 'user/{id}',		['as' => 'role.update', 'uses' => 'UserController@update',  'middleware' => 'permission:edit_user']);
 Route::delete('user/{id}',							['as' => 'user.destroy','uses' => 'UserController@destroy', 'middleware' => 'permission:delete_user']);
+
+// Map routes
+Route::get('map',									['as' => 'map.index', 	'uses' => 'MapController@index']);
+Route::get('map/{id}',								['as' => 'map.show', 	'uses' => 'MapController@show']);
+Route::get('map/{id}/edit',							['as' => 'map.edit', 	'uses' => 'MapController@edit']);
+Route::match(array('PUT','PATCH'), 'map/{id}',		['as' => 'map.update', 	'uses' => 'MapController@update',  'middleware' => 'permission:edit_map']);
+Route::delete('map/{id}',							['as' => 'map.destroy',	'uses' => 'MapController@destroy', 'middleware' => 'permission:delete_map']);
