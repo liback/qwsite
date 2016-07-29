@@ -17,7 +17,7 @@
     	@foreach ($maps->getCollection()->all() as $map)
     	<tr>
     	<td><?php echo $map->id;?></td>
-    	<td><?php echo $map->name?></td>
+    	<td><a href="{{ action('MapController@show', [$map->id]) }}"><?php echo $map->name?></a></td>
     	<td><a href="{{ action('MapController@edit', [$map->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a></td>
     	<td>
     		{!! Form::open([
