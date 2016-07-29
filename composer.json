@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "liback/qwsite",
+    "description": "QW Site.",
+    "keywords": ["QuakeWorld", "Quake", "maps"],
     "license": "MIT",
     "type": "project",
     "require": {
