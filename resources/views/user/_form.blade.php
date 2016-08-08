@@ -18,6 +18,11 @@
 {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group">
+{!! Form::label('state', 'State:') !!}
+{!! Form::select('state', ['active' => 'active','banned' => 'banned'], $user->state, ['class' => 'form-control']) !!}
+</div>
+
 <div class="form-inline">
 {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
 </div>

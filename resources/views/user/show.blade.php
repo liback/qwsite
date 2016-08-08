@@ -10,6 +10,7 @@
 	<tr><th>ID</th><td><?php echo $user->id;?></td></tr>
 	<tr><th>Name</th><td><?php echo $user->name;?></td></tr>
 	<tr><th>Role(s)</th><td><?php echo $user->printRoles();?></td></tr>
+	<tr><th>State</th><td><?php echo $user->state;?></td></tr>
 	<tr><th>Action</th>
 	<td><a href="{{ action('UserController@edit', [$user->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a> 
 	

@@ -12,12 +12,16 @@
     	<tr>
     	<th>ID</th>
     	<th>Name</th>
+        <th>Role</th>
+        <th>State</th>
     	<th colspan="2">Action</th>
     	</tr>
     	@foreach ($users->getCollection()->all() as $user)
     	<tr>
     	<td><?php echo $user->id;?></td>
     	<td><a href="{{ action('UserController@show', [$user->id]) }}"><?php echo $user->name?></a></td>
+        <td><?php echo $user->printRoles();?></td>
+        <td><?php echo $user->state;?></td>
     	<td><a href="{{ action('UserController@edit', [$user->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a></td>
     	<td>
     		{!! Form::open([
