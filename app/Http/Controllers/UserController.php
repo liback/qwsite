@@ -113,7 +113,8 @@ class UserController extends Controller
 
 		$data = [
 			'name'	=> 	$request->input('name'),
-			'email'	=>	$request->input('email')
+			'email'	=>	$request->input('email'),
+			'state'	=>	$request->input('state')
 		];
 
 		// Only include password if we changed it,
@@ -123,10 +124,16 @@ class UserController extends Controller
 		}
 
 		$user->update($data);
+		
+		
+		if ($request->input('roles') == NULL) {
+			// If no roles are checked then we detach all
+			$user->roles()->detach();
+		} else {
+			// If there are roles left then sync
+			$user->roles()->sync($request->input('roles'));
+		}
 
-		// Only checked roles are left for the user
-		$user->roles()->sync($request->input('roles'));
-		 
 		Session()->flash('flash_message', 'User successfully updated!');
 
 		return redirect()->route('user.index');
