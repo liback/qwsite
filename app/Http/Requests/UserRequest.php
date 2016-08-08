@@ -33,9 +33,9 @@ class UserRequest extends Request
     	    case 'POST':
     	        {	
                     return [
-                        'name' => 'required|unique:users|min:2',
-                        'email' => 'required|email|max:255|unique:users',
-                        'password' => 'required|min:6|confirmed',
+                        'name'      => 'required|unique:users|min:2',
+                        'email'     => 'required|email|max:255|unique:users',
+                        'password'  => 'required|min:6|confirmed',
                     ];
     	        }
     	    case 'PUT':
@@ -45,7 +45,7 @@ class UserRequest extends Request
                         // Check name for uniqueness in the roles table with 
                         // the exception of role name with ID = $this->id 
                         // which is the role being currently edited.
-                        'name' => 'required|min:2|unique:users,name,'. $this->id,
+                        'name'  => 'required|min:2|unique:users,name,'. $this->id,
     	                'email' => 'required|email|max:255|unique:users,email,'. $this->id,
     	            ];    	        	
     	        }
