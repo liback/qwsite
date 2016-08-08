@@ -1,9 +1,9 @@
 <div class="form-group">
-{!! Form::label('name', 'Name:') !!}
+{!! Form::label('name', Lang::get('maps.name')) !!}
 {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
-{!! Form::label('description', 'Description:') !!}
+{!! Form::label('description', Lang::get('maps.description')) !!}
 {!! Form::text('description', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-inline">
