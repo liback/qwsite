@@ -20,7 +20,7 @@
 
 <div class="form-group">
 {!! Form::label('state', 'State:') !!}
-{!! Form::select('state', ['active' => 'active','banned' => 'banned'], $user->state, ['class' => 'form-control']) !!}
+{!! Form::select('state', ['active' => 'active','banned' => 'banned'], isset($user->state) ? $user->state : 'active', ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-inline">
