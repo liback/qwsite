@@ -65,6 +65,19 @@ class RoleController extends Controller
     }
 
     /**
+     * Show role with specified ID.
+     * 
+     * @param  int $id
+     * @return view
+     */
+    public function show($id)
+    {
+        $role = \App\Role::findOrFail($id);
+
+        return View('role.show')->with('role', $role);
+    }
+
+    /**
      * Save the role and permissions.
      * 
      * @param  RoleRequest $request

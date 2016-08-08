@@ -17,7 +17,7 @@
     	@foreach ($roles->getCollection()->all() as $role)
     	<tr>
     	<td><?php echo $role->id;?></td>
-    	<td><?php echo $role->name?></td>
+    	<td><a href="{{ action('RoleController@show', [$role->id]) }}"><?php echo $role->name?></a></td>
     	<td><a href="{{ action('RoleController@edit', [$role->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a></td>
     	<td>
     		{!! Form::open([
