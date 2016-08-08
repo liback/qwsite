@@ -13,12 +13,18 @@ class PermissionsTableSeeder extends Seeder
     {
         App\Permission::create(['name' => 'edit_map']);
         App\Permission::create(['name' => 'delete_map']);
+        App\Permission::create(['name' => 'list_maps']);
+        App\Permission::create(['name' => 'show_map']);
         App\Permission::create(['name' => 'edit_role']);
         App\Permission::create(['name' => 'create_role']);
         App\Permission::create(['name' => 'delete_role']);
+        App\Permission::create(['name' => 'list_roles']);
+        App\Permission::create(['name' => 'show_role']);
         App\Permission::create(['name' => 'edit_user']);
      	App\Permission::create(['name' => 'create_user']);
         App\Permission::create(['name' => 'delete_user']);
+        App\Permission::create(['name' => 'list_users']);
+        App\Permission::create(['name' => 'show_user']);
         
         $adminRole	= App\Role::create(['name' => 'administrator']);
         $memberRole	= App\Role::create(['name' => 'guest']);
