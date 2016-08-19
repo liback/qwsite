@@ -20,6 +20,7 @@ return [
     'id'                => 'ID',
     'index'             => 'Index',
     'map'               => 'Map',
+    'mod'               => 'Mod',
     'name'              => 'Name',
     'no_maps_found'     => 'No maps found',
     'save_changes'      => 'Save changes',

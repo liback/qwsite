@@ -16,6 +16,7 @@ class CreateMapsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('description');
+            $table->string('mod');
             $table->integer('num_ssg');
             $table->integer('num_ng');
             $table->integer('num_sng');
@@ -43,6 +44,7 @@ class CreateMapsTable extends Migration
             $table->integer('num_spawns');
             $table->integer('num_teleports');
             $table->integer('num_secrets');
+            $table->integer('num_secret_doors');
             $table->timestamps();
         });
     }

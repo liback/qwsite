@@ -65,12 +65,14 @@ return [
     'powerup_env_suit_abbrev'   => 'Env. Suit',
 
     // Misc.
-    'env_spawn'             => 'Spawn',
-    'env_spawn_abbrev'      => 'Spawn',
-    'env_secret'            => 'Secret',
-    'env_secret_abbrev'     => 'SEC',
-    'env_teleport'          => 'Teleport',
-    'env_teleport_abbrev'   => 'Tele',
+    'env_spawn'                 => 'Spawn',
+    'env_spawn_abbrev'          => 'Spawn',
+    'env_secret'                => 'Secret',
+    'env_secret_abbrev'         => 'SEC',
+    'env_secret_door'           => 'Secret door',
+    'env_secret_door_abbrev'    => 'SEC-DOOR',
+    'env_teleport'              => 'Teleport',
+    'env_teleport_abbrev'       => 'Tele',
     
     // General
     'ammo'                  => 'Ammo',

@@ -12,6 +12,7 @@
 			<tr><th>{{ Lang::get('maps.id') }}</th><td><?php echo $map->id;?></td></tr>
 			<tr><th>{{ Lang::get('maps.name') }}</th><td><?php echo $map->name;?></td></tr>
 			<tr><th>{{ Lang::get('maps.description') }}</th><td><?php echo $map->description;?></td></tr>
+			<tr><th>{{ Lang::get('maps.mod') }}</th><td><?php echo $map->mod;?></td></tr>
 			<tr><th>{{ Lang::get('maps.action') }}</th>
 			<td><a href="{{ action('MapController@edit', [$map->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a> 
 			
@@ -87,6 +88,7 @@
 			<tr><th>{{ Lang::get('qw.env_spawn') }}</th><td><?php echo $map->num_spawns;?></td></tr>
 			<tr><th>{{ Lang::get('qw.env_teleport') }}</th><td><?php echo $map->num_teleports;?></td></tr>
 			<tr><th>{{ Lang::get('qw.env_secret') }}</th><td><?php echo $map->num_secrets;?></td></tr>
+			<tr><th>{{ Lang::get('qw.env_secret_door') }}</th><td><?php echo $map->num_secret_doors;?></td></tr>
 			</table>
 		</div>
 	</div>
