@@ -97,7 +97,7 @@
 				<a href="{{ asset($screenshot) }}"><img src="{{ asset($screenshot) }}" style="width: 100%; height: 100%; margin: .2em 0;"/></a>
 			<?php endforeach;?>
 		<?php else:?>
-			<p>No screenshot found.</p>
+			<p>{{ Lang::get('maps.no_screenshots_found') }}</p>
 		<?php endif;?>
 	</div>
 </div>
