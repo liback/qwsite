@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\MapRequest;
 
+use File;
+
 class MapController extends Controller
 {
 
@@ -60,8 +62,13 @@ class MapController extends Controller
 	public function show($id)
 	{
 		$map = \App\Map::findOrFail($id);
+        $path = config('app.screenshot_dir') . $map->name;
+        $screenshots = array(); 
 
-		return View('map.show')->with('map', $map);
+        if (File_Exists($path))
+            $screenshots = File::allFiles($path);
+
+		return View('map.show')->with('map', $map)->with('screenshots', $screenshots);
 	}
 
     /**

@@ -209,4 +209,15 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Storage paths
+    |--------------------------------------------------------------------------
+    |
+    | Various storage paths for the application.
+    |
+    */
+   
+   'screenshot_dir' => 'storage/images/screenshots/',
+
 ];
