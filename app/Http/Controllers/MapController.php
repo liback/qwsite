@@ -68,7 +68,13 @@ class MapController extends Controller
         if (File_Exists($path))
             $screenshots = File::allFiles($path);
 
-		return View('map.show')->with('map', $map)->with('screenshots', $screenshots);
+        //Previous map ID
+        $prevMap = \App\Map::where('id', '<', $map->id)->max('id');
+
+        //Next map ID
+        $nextMap = \App\Map::where('id', '>', $map->id)->min('id');
+
+		return View('map.show')->with('map', $map)->with('screenshots', $screenshots)->with('prevMap', $prevMap)->with('nextMap', $nextMap);
 	}
 
     /**
