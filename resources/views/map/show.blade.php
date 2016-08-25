@@ -19,7 +19,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<table class="table table-hover">
-				<tr><th>{{ Lang::get('maps.name') }}</th><td><?php echo $map->name;?></td></tr>
+				<tr><th style="width: 10em;">{{ Lang::get('maps.name') }}</th><td><?php echo $map->name;?></td></tr>
 				<tr><th>{{ Lang::get('maps.description') }}</th><td><?php echo $map->description;?></td></tr>
 				<tr><th>{{ Lang::get('maps.mod') }}</th><td><?php echo $map->mod;?></td></tr>
 				<tr><th>{{ Lang::get('maps.action') }}</th>
