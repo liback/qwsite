@@ -32,7 +32,7 @@ class MapController extends Controller
 	 * @return view
 	 */
     public function index() {
-    	$maps = \App\Map::Latest()->paginate();
+    	$maps = \App\Map::Latest()->paginate(150);
     	return view('map.index')->with('maps', $maps);
     }
 
