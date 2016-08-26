@@ -43,3 +43,8 @@ Route::get('map/{id}',								['as' => 'map.show', 	'uses' => 'MapController@sho
 Route::get('map/{id}/edit',							['as' => 'map.edit', 	'uses' => 'MapController@edit',   	'middleware' => 'permission:edit_map']);
 Route::match(array('PUT','PATCH'), 'map/{id}',		['as' => 'map.update', 	'uses' => 'MapController@update',  	'middleware' => 'permission:edit_map']);
 Route::delete('map/{id}',							['as' => 'map.destroy',	'uses' => 'MapController@destroy', 	'middleware' => 'permission:delete_map']);
+
+// Image resize
+Route::get('/assets/{img}/{h?}/{w?}', function($img, $h=200, $w=200) {
+	return \Image::make(asset($img))->resize($h, $w)->response('jpg');
+})->where('img','(.*(?:%2F:)?.*.jpg)');
