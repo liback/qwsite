@@ -9,12 +9,12 @@
 		<div class="row">
 			<div class="col-xs-6 text-left">
 				<?php if($prevMap):?>
-					<a href="{{ URL::to('map/'. $prevMap) }}" class="btn btn-lg btn-default"><< Previous</a>
+					<a href="{{ URL::to('map/'. $prevMap) }}" class="btn btn-lg btn-default"><< {{ Lang::get('maps.previous') }}</a>
 				<?php endif;?>
 			</div>
 			<div class="col-xs-6 text-right">
 				<?php if($nextMap): ?>
-					<a href="{{ URL::to('map/'. $nextMap) }}" class="btn btn-lg btn-default">Next >></a>
+					<a href="{{ URL::to('map/'. $nextMap) }}" class="btn btn-lg btn-default">{{ Lang::get('maps.next') }} >></a>
 				<?php endif;?>
 			</div>
 		</div>

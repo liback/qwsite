@@ -22,8 +22,10 @@ return [
     'map'                   => 'Map',
     'mod'                   => 'Mod',
     'name'                  => 'Name',
+    'next'                  => 'Next',
     'no_maps_found'         => 'No maps found.',
     'no_screenshots_found'  => 'No screenshots found.',
+    'previous'              => 'Previous',
     'save_changes'          => 'Save changes',
 
 ];
