@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Requests\MapRequest;
-
+use Input;
 use File;
+use App\MapFilters;
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use App\Http\Requests\MapRequest;
 
 class MapController extends Controller
 {
@@ -31,8 +31,9 @@ class MapController extends Controller
 	 * 
 	 * @return view
 	 */
-    public function index() {
-    	$maps = \App\Map::Latest()->paginate(150);
+    public function index(MapFilters $filters) {
+    	$maps = \App\Map::filter($filters)->paginate();
+
     	return view('map.index')->with('maps', $maps);
     }
 
