@@ -34,7 +34,7 @@ class MapController extends Controller
 	 * @return view
 	 */
     public function index(MapFilters $filters) {
-        $this->authorize('list_maps', \App\Map::class);
+        //$this->authorize('list_maps', \App\Map::class);
     	$maps = \App\Map::filter($filters)->paginate();
 
     	return view('map.index')->with('maps', $maps);
@@ -70,7 +70,7 @@ class MapController extends Controller
 	{
 		$map = \App\Map::findOrFail($id);
 
-        $this->authorize('show_map', $map);
+        //$this->authorize('show_map', $map);
 
         $path = config('app.screenshot_dir') . $map->name;
         $screenshots = array(); 
