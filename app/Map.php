@@ -11,11 +11,4 @@ class Map extends Model
     	'name',
     	'description'
     ];
-
-    /*
-    protected $filterable = [
-    	'name',
-    	'description'
-    ];
-    */
 }
