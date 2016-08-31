@@ -12,14 +12,19 @@
 	<tr><th>Role(s)</th><td><?php echo $user->printRoles();?></td></tr>
 	<tr><th>State</th><td><?php echo $user->state;?></td></tr>
 	<tr><th>Action</th>
-	<td><a href="{{ action('UserController@edit', [$user->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a> 
-	
-		{!! Form::open([
-			'route' => ['user.destroy', $user->id], 
-			'method' => 'DELETE'
-			]) !!}
-			{!! Form::submit('Delete', ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
-		{!! Form::close() !!}
+	<td>
+		@can('edit_user', $user)
+			<a href="{{ action('UserController@edit', [$user->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a> 
+		@endcan
+
+		@can('delete_user', $user)
+			{!! Form::open([
+				'route' => ['user.destroy', $user->id], 
+				'method' => 'DELETE'
+				]) !!}
+				{!! Form::submit('Delete', ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
+			{!! Form::close() !!}
+		@endcan
 	</td>
 	</tr>
 	</table>

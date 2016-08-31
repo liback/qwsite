@@ -25,6 +25,7 @@ class PermissionsTableSeeder extends Seeder
         App\Permission::create(['name' => 'delete_user']);
         App\Permission::create(['name' => 'list_users']);
         App\Permission::create(['name' => 'show_user']);
+        App\Permission::create(['name' => 'edit_profile']);
         
         $adminRole	= App\Role::create(['name' => 'administrator']);
         $memberRole	= App\Role::create(['name' => 'guest']);

@@ -22,14 +22,20 @@
     	<td><a href="{{ action('UserController@show', [$user->id]) }}"><?php echo $user->name?></a></td>
         <td><?php echo $user->printRoles();?></td>
         <td><?php echo $user->state;?></td>
-    	<td><a href="{{ action('UserController@edit', [$user->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a></td>
     	<td>
-    		{!! Form::open([
-    			'route' => ['user.destroy', $user->id], 
-    			'method' => 'DELETE'
-    			]) !!}
-    			{!! Form::submit('Delete', ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
-    		{!! Form::close() !!}
+            @can('edit_user', $user)
+                <a href="{{ action('UserController@edit', [$user->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a>
+            @endcan
+        </td>
+    	<td>
+            @can('delete_user', $user)
+        		{!! Form::open([
+        			'route' => ['user.destroy', $user->id], 
+        			'method' => 'DELETE'
+        			]) !!}
+        			{!! Form::submit('Delete', ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
+        		{!! Form::close() !!}
+            @endcan
     	</td>
     	</tr>
     	@endforeach

@@ -16,6 +16,7 @@ class RoleController extends Controller
 	 */
     public function create() 
     {
+        $this->authorize('create_role', \App\Role::class);
     	$permissions = \App\Permission::all();
 
     	return View('role.create')->with('permissions', $permissions);
@@ -31,6 +32,9 @@ class RoleController extends Controller
     public function destroy($id, Request $request) 
     {
     	$role = \App\Role::findOrFail($id);
+        
+        $this->authorize('delete_role', $role);
+
     	$role->delete();
 
     	Session()->flash('flash_message', 'Role successfully deleted!');
@@ -48,6 +52,9 @@ class RoleController extends Controller
     public function edit($id, Request $request) 
     {
     	$role = \App\Role::findOrFail($id);
+
+        $this->authorize('edit_role', $role);
+
     	$permissions = \App\Permission::all();
 
     	return view('role.edit')->with('role', $role)->with('permissions', $permissions)->with('checkedPermissions', $role->permissions);
@@ -60,6 +67,7 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $this->authorize('list_roles', \App\Role::class);
     	$roles = \App\Role::Latest()->paginate();
     	return view('role.index')->with('roles', $roles);
     }
@@ -74,6 +82,8 @@ class RoleController extends Controller
     {
         $role = \App\Role::findOrFail($id);
 
+        $this->authorize('show_role', $role);
+
         return View('role.show')->with('role', $role);
     }
 
@@ -85,6 +95,7 @@ class RoleController extends Controller
      */
     public function store(RoleRequest $request) 
     {
+        $this->authorize('create_role', \App\Role::class);
     	$role = \App\Role::create($request->all());
 
     	// Add checked permissions
@@ -105,6 +116,9 @@ class RoleController extends Controller
     public function update($id, RoleRequest $request) 
     {
     	$role = \App\Role::findOrFail($id);
+        
+        $this->authorize('edit_role', $role);
+
     	$role->update($request->all());
 
     	// Only checked permissions are left for the role

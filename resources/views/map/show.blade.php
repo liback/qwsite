@@ -26,15 +26,19 @@
 				<tr><th style="width: 10em;">{{ Lang::get('maps.name') }}</th><td><?php echo $map->name;?></td></tr>
 				<tr><th>{{ Lang::get('maps.description') }}</th><td><?php echo $map->description;?></td></tr>
 				<tr><th>{{ Lang::get('maps.mod') }}</th><td><?php echo $map->mod;?></td></tr>
-				<tr><th>{{ Lang::get('maps.action') }}</th>
-				<td><a href="{{ action('MapController@edit', [$map->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a> 
+				<td colspan="2">
+					@can('edit_map', $map)
+					<a href="{{ action('MapController@edit', [$map->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a> 
+					@endcan
 				
-					{!! Form::open([
-						'route' => ['map.destroy', $map->id], 
-						'method' => 'DELETE'
-						]) !!}
-						{!! Form::submit('Delete', ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
-					{!! Form::close() !!}
+					@can('delete_map', $map)
+						{!! Form::open([
+							'route' => ['map.destroy', $map->id], 
+							'method' => 'DELETE'
+							]) !!}
+							{!! Form::submit('Delete', ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
+						{!! Form::close() !!}
+					@endcan
 				</td>
 				</tr>
 				</table>

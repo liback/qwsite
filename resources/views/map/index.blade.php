@@ -25,14 +25,20 @@
         	<tr>
         	<td><?php echo $map->id;?></td>
         	<td><a href="{{ action('MapController@show', [$map->id]) }}"><?php echo $map->name?></a></td>
-        	<td><a href="{{ action('MapController@edit', [$map->id]) }}"><button type="button" class="btn btn-xs btn-info">{{ Lang::get('maps.edit') }}</button></a></td>
         	<td>
-        		{!! Form::open([
-        			'route' => ['map.destroy', $map->id], 
-        			'method' => 'DELETE'
-        			]) !!}
-        			{!! Form::submit(Lang::get('maps.delete'), ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
-        		{!! Form::close() !!}
+                @can('edit_map', $map)
+                    <a href="{{ action('MapController@edit', [$map->id]) }}"><button type="button" class="btn btn-xs btn-info">{{ Lang::get('maps.edit') }}</button></a>
+                @endcan
+            </td>
+        	<td>
+                @can('delete_map', $map)
+            		{!! Form::open([
+            			'route' => ['map.destroy', $map->id], 
+            			'method' => 'DELETE'
+            			]) !!}
+            			{!! Form::submit(Lang::get('maps.delete'), ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
+            		{!! Form::close() !!}
+                @endcan
         	</td>
         	</tr>
         	@endforeach

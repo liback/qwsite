@@ -23,6 +23,8 @@ class MapController extends Controller
     {
     	$map = \App\Map::findOrFail($id);
 
+        $this->authorize('edit_map', $map);
+
     	return view('map.edit')->with('map', $map);
     }
 
@@ -32,6 +34,7 @@ class MapController extends Controller
 	 * @return view
 	 */
     public function index(MapFilters $filters) {
+        $this->authorize('list_maps', \App\Map::class);
     	$maps = \App\Map::filter($filters)->paginate();
 
     	return view('map.index')->with('maps', $maps);
@@ -47,6 +50,9 @@ class MapController extends Controller
     public function destroy($id, Request $request) 
     {
     	$map = \App\Map::findOrFail($id);
+        
+        $this->authorize('delete_map', $map);
+
     	$map->delete();
 
     	Session()->flash('flash_message', 'Map successfully deleted!');
@@ -63,6 +69,9 @@ class MapController extends Controller
 	public function show($id)
 	{
 		$map = \App\Map::findOrFail($id);
+
+        $this->authorize('show_map', $map);
+
         $path = config('app.screenshot_dir') . $map->name;
         $screenshots = array(); 
 
@@ -88,6 +97,9 @@ class MapController extends Controller
     public function update($id, MapRequest $request) 
     {
     	$map = \App\Map::findOrFail($id);
+        
+        $this->authorize('edit_map', $map);
+
     	$map->update($request->all());
 
     	Session()->flash('flash_message', 'Map successfully updated!');

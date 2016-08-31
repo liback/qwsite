@@ -18,14 +18,20 @@
     	<tr>
     	<td><?php echo $role->id;?></td>
     	<td><a href="{{ action('RoleController@show', [$role->id]) }}"><?php echo $role->name?></a></td>
-    	<td><a href="{{ action('RoleController@edit', [$role->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a></td>
     	<td>
-    		{!! Form::open([
-    			'route' => ['role.destroy', $role->id], 
-    			'method' => 'DELETE'
-    			]) !!}
-    			{!! Form::submit('Delete', ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
-    		{!! Form::close() !!}
+	    	@can('edit_role', $role)
+	    		<a href="{{ action('RoleController@edit', [$role->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a>
+	    	@endcan
+    	</td>
+    	<td>
+    		@can('delete_role', $role)
+	    		{!! Form::open([
+	    			'route' => ['role.destroy', $role->id], 
+	    			'method' => 'DELETE'
+	    			]) !!}
+	    			{!! Form::submit('Delete', ['class' => 'btn btn-xs btn-danger', 'onclick' => 'return confirm(\'Are you sure?\')']) !!}
+	    		{!! Form::close() !!}
+    		@endcan
     	</td>
     	</tr>
     	@endforeach

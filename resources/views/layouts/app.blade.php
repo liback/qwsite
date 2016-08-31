@@ -69,11 +69,11 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('user/create') }}">User - Create</a></li>
-                                <li><a href="{{ url('/user') }}">User - List</a></li>
-                            	<li><a href="{{ url('/role/create') }}">Role - Create</a></li>
-                            	<li><a href="{{ url('/role') }}">Role - List</a></li>
-                            	<li><a href="{{ url('/user/'. Auth::user()->id) }}">Your Profile</a></li>
+                                @can('create_user', App\User::class)<li><a href="{{ url('user/create') }}">User - Create</a></li>@endcan
+                                @can('list_users', App\User::class)<li><a href="{{ url('/user') }}">User - List</a></li>@endcan
+                            	@can('create_role', App\Role::class)<li><a href="{{ url('/role/create') }}">Role - Create</a></li>@endcan
+                            	@can('list_roles', App\Role::class)<li><a href="{{ url('/role') }}">Role - List</a></li>@endcan
+                            	@can('edit_profile', App\User::class)<li><a href="{{ url('/user/editprofile') }}">Your Profile</a></li>@endcan
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
