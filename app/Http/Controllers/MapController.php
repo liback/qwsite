@@ -36,8 +36,10 @@ class MapController extends Controller
     public function index(MapFilters $filters) {
         //$this->authorize('list_maps', \App\Map::class);
     	$maps = \App\Map::filter($filters)->paginate();
+        $mods = \App\Map::select('mod')->distinct()->lists('mod', 'mod');
+        $mods["all"] = '-- All --';
 
-    	return view('map.index')->with('maps', $maps);
+    	return view('map.index')->with('maps', $maps)->with('mods', $mods->sort());
     }
 
     /**
