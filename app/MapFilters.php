@@ -10,8 +10,8 @@ class MapFilters extends QueryFilters
 		return $this->builder->where('description', 'like', '%'. $description .'%');
 	}
 
-	public function mod($mod = "all") {
-		if ($mod == "all")
+	public function mod($mod = "") {
+		if ($mod == "")
 			return;
 
 		return $this->builder->where('mod', $mod);

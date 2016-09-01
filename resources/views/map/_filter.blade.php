@@ -10,7 +10,7 @@
 
 <div class="form-group">
 {!! Form::label('mod', 'Mod:') !!}
-{!! Form::select('mod', $mods, Input::get('mod')) !!}
+{!! Form::select('mod', $mods, Input::get('mod'), ['placeholder' => '-- All mods --']) !!}
 </div>
 
 <div class="form-inline">
