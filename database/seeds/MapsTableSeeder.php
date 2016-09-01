@@ -13,9 +13,11 @@ class MapsTableSeeder extends Seeder
     {
     	$filename = public_path() .'/map_entities.csv';
     	$delimiter = '|';
-
+        $row = 0;
     	if (($handle = fopen($filename, 'r')) !== FALSE) {
     		while (($data = fgetcsv($handle, 1000, '|')) !== FALSE) {
+                if ($row++ == 0)
+                    continue;
 
     			App\Map::create([
     				'name' 			=> $data[0],
