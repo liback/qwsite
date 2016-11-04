@@ -19,12 +19,14 @@
         	<tr>
         	<th>{{ Lang::get('maps.id') }}</th>
         	<th>{{ Lang::get('maps.name') }}</th>
+            <th>{{ Lang::get('maps.description') }}</th>
         	<th colspan="2">{{ Lang::get('maps.action') }}</th>
         	</tr>
         	@foreach ($maps->getCollection()->all() as $map)
         	<tr>
         	<td><?php echo $map->id;?></td>
         	<td><a href="{{ action('MapController@show', [$map->id]) }}"><?php echo $map->name?></a></td>
+            <td><a href="{{ action('MapController@show', [$map->id]) }}"><?php echo $map->description?></a></td>
         	<td>
                 @can('edit_map', $map)
                     <a href="{{ action('MapController@edit', [$map->id]) }}"><button type="button" class="btn btn-xs btn-info">{{ Lang::get('maps.edit') }}</button></a>
