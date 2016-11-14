@@ -222,5 +222,7 @@ return [
     */
    
    'screenshot_dir' => 'storage/images/screenshots/',
-
+   'map_bsp_dir'    => 'storage/maps/',
+   'map_readme_dir' => 'storage/readmes/',
+   'map_loc_dir'   => 'storage/locs/'
 ];

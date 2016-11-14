@@ -74,11 +74,24 @@ class MapController extends Controller
 
         //$this->authorize('show_map', $map);
 
-        $path = config('app.screenshot_dir') . $map->name;
+        $screenshotPath = config('app.screenshot_dir') . $map->name;
         $screenshots = array(); 
 
-        if (File_Exists($path))
-            $screenshots = File::allFiles($path);
+        if (File_Exists($screenshotPath))
+            $screenshots = File::allFiles($screenshotPath);
+
+        $mapFile = config('app.map_bsp_dir') . $map->name .".bsp";
+
+        if (!File_Exists($mapFile))
+        	$mapFile = "";
+
+        $mapReadmeFile = config('app.map_readme_dir') . $map->name .".txt";
+        if (!File_Exists($mapReadmeFile))
+        	$mapReadmeFile = "";
+
+        $mapLocFile = config('app.map_loc_dir') . $map->name .".loc";
+        if (!File_Exists($mapLocFile))
+        	$mapLocFile = "";
 
         //Previous map ID
         $prevMap = \App\Map::where('id', '<', $map->id)->max('id');
@@ -86,7 +99,13 @@ class MapController extends Controller
         //Next map ID
         $nextMap = \App\Map::where('id', '>', $map->id)->min('id');
 
-		return View('map.show')->with('map', $map)->with('screenshots', $screenshots)->with('prevMap', $prevMap)->with('nextMap', $nextMap);
+		return View('map.show')->with('map', $map)
+								->with('screenshots', $screenshots)
+								->with('prevMap', $prevMap)
+								->with('nextMap', $nextMap)
+								->with('mapFile', $mapFile)
+								->with('mapReadmeFile', $mapReadmeFile)
+								->with('mapLocFile', $mapLocFile);
 	}
 
     /**

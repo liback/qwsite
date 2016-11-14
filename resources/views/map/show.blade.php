@@ -26,6 +26,37 @@
 				<tr><th style="width: 10em;">{{ Lang::get('maps.name') }}</th><td><?php echo $map->name;?></td></tr>
 				<tr><th>{{ Lang::get('maps.description') }}</th><td><?php echo $map->description;?></td></tr>
 				<tr><th>{{ Lang::get('maps.mod') }}</th><td><?php echo $map->mod;?></td></tr>
+				<tr>
+				<th>{{ Lang::get('maps.bsp_file') }}</th>
+				<td>
+					<?php if (!empty($mapFile)):?>
+						<a href="{{ asset($mapFile) }}">{{ Lang::get('maps.available') }}</a>
+					<?php else:?>
+						{{ Lang::get('maps.file_not_found') }}
+					<?php endif;?>
+				</td>
+				</tr>
+				<tr>
+				<th>{{ Lang::get('maps.location_file') }}</th>
+				<td>
+					<?php if (!empty($mapLocFile)):?>
+						<a href="{{ asset($mapLocFile) }}">{{ Lang::get('maps.available') }}</a>
+					<?php else:?>
+						{{ Lang::get('maps.file_not_found') }}
+					<?php endif;?>
+				</td>
+				</tr>					
+				<tr>
+				<th>{{ Lang::get('maps.readme') }}</th>
+				<td>
+					<?php if (!empty($mapReadmeFile)):?>
+						<a href="{{ asset($mapReadmeFile) }}">{{ Lang::get('maps.available') }}</a>
+					<?php else:?>
+						{{ Lang::get('maps.file_not_found') }}
+					<?php endif;?>
+				</td>
+				</tr>				
+				<tr>
 				<td colspan="2">
 					@can('edit_map', $map)
 					<a href="{{ action('MapController@edit', [$map->id]) }}"><button type="button" class="btn btn-xs btn-info">Edit</button></a> 
