@@ -141,8 +141,14 @@
 	</div>
 	<div class="col-sm-4">
 		<?php if (count($screenshots) > 0):?>
+			<?php $prevType = ""; ?>
 			<?php foreach($screenshots as $screenshot):?>
-				<a href="{{ asset($screenshot) }}"><img src="{{ url('assets', [$screenshot, 200, 150]) }}"" style="width: 100%; height: 100%; margin: .2em 0;"/></a>
+				<?php if ($prevType != $screenshot->type): ?>
+					<h3 style="margin: 0; padding: 10px;"><?php echo ucfirst($screenshot->type);?></h3>
+					<?php $prevType = $screenshot->type;?>
+				<?php endif;?>
+
+				<a href="{{ asset($screenshot->path) }}"><img src="{{ url('assets', [$screenshot->path, 200, 150]) }}"" alt="<?php echo $screenshot->map;?> <?php echo $screenshot->type;?>" title="<?php echo $screenshot->map;?> <?php echo $screenshot->type;?>" style="width: 100%; height: 100%; margin: .2em 0;"/></a>
 			<?php endforeach;?>
 		<?php else:?>
 			<p>{{ Lang::get('maps.no_screenshots_found') }}</p>

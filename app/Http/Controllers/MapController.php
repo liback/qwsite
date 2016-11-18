@@ -77,8 +77,7 @@ class MapController extends Controller
         $screenshotPath = config('app.screenshot_dir') . $map->name;
         $screenshots = array(); 
 
-        if (File_Exists($screenshotPath))
-            $screenshots = File::allFiles($screenshotPath);
+        $screenshots = \App\Screenshot::where('map', $map->name)->orderBy('type', 'asc')->get();
 
         $mapFile = config('app.map_bsp_dir') . $map->name .".bsp";
 
